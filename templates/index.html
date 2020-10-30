@@ -10,24 +10,31 @@
         </div>
         <input id ='length' value="" type="input">
         <input id ='width' value="" type="input">
-        <button id="predict-button"> Predict</button>
+        <button onclick =predict_button()> Predict</button>
         <p style = "font-weight:bold">Predictions</p>
         <p id='ans'>Result: </p>
         
         <script src= 'https://code.jquery.com/jquery-3.3.1.min.js'></script>
+
         <script>
-                $("#predict-button").click(function(event){
+            function predict_button(event){
                 let state = {
                     length : parseInt(document.getElementById('length').value),
                     width : parseInt(document.getElementById('width').value)
                 }
                 console.log(state);
-                $.post("https://boston-house.herokuapp.com//predict", JSON.stringify(state), function(response){     
-                    console.log(response);
-                    document.getElementById('ans').innerHTML = 'Result: ' + response.prediction.Result.toFixed(6)
-                    console.log(response);
-                });
-            });
+                fetch("http://127.0.0.1:5000/predict",{
+                      method:'post',
+                      headers:{'Content-Type':'application/json'},
+                      body:JSON.stringify(state)
+                })
+                .then(res=>res.json())       
+                .then(result=>{   
+                    console.log(result)                     
+                    document.getElementById('ans').innerHTML = 'Result: ' + result.prediction.Result.toFixed(6) 
+                    console.log(result)                    
+                })
+            };
         </script>
     </body>
 </html>
