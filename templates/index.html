@@ -15,7 +15,6 @@
         <p id='ans'>Result: </p>
         
         <script src= 'https://code.jquery.com/jquery-3.3.1.min.js'></script>
-
         <script>
                 $("#predict-button").click(function(event){
                 let state = {
@@ -23,8 +22,8 @@
                     width : parseInt(document.getElementById('width').value)
                 }
                 console.log(state);
-                $.post("http://127.0.0.1:5000/predict", JSON.stringify(state), function(response){     
-                                   
+                $.post("https://boston-house.herokuapp.com//predict", JSON.stringify(state), function(response){     
+                    console.log(response);
                     document.getElementById('ans').innerHTML = 'Result: ' + response.prediction.Result.toFixed(6)
                     console.log(response);
                 });
