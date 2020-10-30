@@ -21,7 +21,7 @@
                     width : parseInt(document.getElementById('width').value)
                 }
                 console.log(state);
-                fetch("http://127.0.0.1:5000/predict",{
+                fetch("https://boston-house.herokuapp.com/predict",{
                       method:'post',
                       headers:{'Content-Type':'application/json'},
                       body:JSON.stringify(state)
