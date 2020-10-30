@@ -1,6 +1,5 @@
 
 from flask import Flask, request, render_template,jsonify
-from flask_bootstrap import Bootstrap
 from keras.models import load_model
 import numpy as np
 
