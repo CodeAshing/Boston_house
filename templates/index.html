@@ -28,12 +28,10 @@
                       headers:{'Content-Type':'application/json'},
                       body:JSON.stringify(state)
                 })
-                .then(res=>{                    
-                    console.log(res) 
-                    res.json()})       
+                .then(res=>res.json())       
                 .then(result=>{   
                     console.log(result)                     
-                    document.getElementById('ans').innerHTML = 'Result: ' + result.prediction.Result.toFixed(6) 
+                    document.getElementById('ans').innerHTML = 'Result: ' + result 
                     console.log(result)                    
                 })
             };
