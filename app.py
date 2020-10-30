@@ -35,10 +35,14 @@ def predict():
     state = request.get_json(force=True)
     value = text_preprocess(state)
     get_model()
-    result = model.predict(value)
-    result=result[0,0]   
-    print(value,result)
-    return jsonify(str(result))
+    result = model.predict(value).tolist()    
+    response = {
+        'prediction' : {
+            'Result' :result[0][0],
+        }
+    }
+    print(value,result,response)
+    return jsonify(response)
 
 
 if __name__ == "__main__":
