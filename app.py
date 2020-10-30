@@ -36,8 +36,8 @@ def predict():
     value = text_preprocess(state)
     get_model()
     result = model.predict(value)
-    result=result[0,0]    
-    return jsonify(str(result))
+    result=result[0,0]        
+    return jsonify(result)
 
 
 if __name__ == "__main__":

@@ -13,6 +13,8 @@
         <button onclick ="predict_button()"> Predict</button>
         <p style = "font-weight:bold">Predictions</p>
         <p id='ans'>Result: </p>
+        
+        <script src= 'https://code.jquery.com/jquery-3.3.1.min.js'></script>
 
         <script>
             function predict_button(event){
@@ -21,7 +23,7 @@
                     width : parseInt(document.getElementById('width').value)
                 }
                 console.log(state);
-                fetch("https://boston-house.herokuapp.com/predict",{
+                fetch("http://127.0.0.1:5000/predict",{
                       method:'post',
                       headers:{'Content-Type':'application/json'},
                       body:JSON.stringify(state)
@@ -30,6 +32,7 @@
                 .then(result=>{
                     document.getElementById('ans').innerHTML = 'Result: ' +result
                     console.log(result)
+                    
                 })
             };
         </script>
