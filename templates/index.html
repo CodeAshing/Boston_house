@@ -28,8 +28,6 @@
                 })
                 .then(res=>res.json())       
                 .then(result=>{
-                    state.length=0
-                    state.width=0
                     document.getElementById('ans').innerHTML = 'Result: ' +result
                     console.log(result)
                 })
